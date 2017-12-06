@@ -4,16 +4,22 @@ import (
 	"github.com/urfave/cli"
 )
 
+const (
+	APP_NAME    = "Golondrina"
+	DESCRIPTION = "Show notifications when a new pull request is assigned to you."
+	VERSION     = "0.1"
+)
+
 func StartApp(args []string, callback func(string, string, int) error) {
 	app := cli.NewApp()
-	app.Name = "Golondrina"
-	app.Usage = "Show notifications when a new pull request is assigned to you."
-	app.Version = "0.1"
+	app.Name = APP_NAME
+	app.Usage = DESCRIPTION
+	app.Version = VERSION
 
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:   "host,H",
-			Value:  "github.com",
+			Value:  "api.github.com",
 			Usage:  "Github host (when using Github Enterprise)",
 			EnvVar: "GITHUB_HOST",
 		},
